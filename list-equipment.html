@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>List Equipment | Equip Trade ZA</title>
+
+<style>
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f5f7;
+
+    color: #222;
+
+}
+
+header {
+
+    background: #151a20;
+
+    padding: 20px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.logo {
+
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+}
+
+.logo span {
+
+    color: #f5a623;
+
+}
+
+header a {
+
+    color: white;
+
+    text-decoration: none;
+
+}
+
+.hero {
+
+    background: #242b33;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 45px 20px;
+
+}
+
+.hero h1 {
+
+    margin: 0 0 10px;
+
+    font-size: 38px;
+
+}
+
+.hero p {
+
+    color: #ccc;
+
+}
+
+.form-container {
+
+    max-width: 850px;
+
+    margin: 40px auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 3px 15px rgba(0,0,0,.10);
+
+}
+
+.form-container h2 {
+
+    margin-top: 0;
+
+    border-bottom: 2px solid #f5a623;
+
+    padding-bottom: 12px;
+
+}
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+.field {
+
+    margin-bottom: 20px;
+
+}
+
+.field label {
+
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+
+}
+
+.field input,
+
+.field select,
+
+.field textarea {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+
+}
+
+.field textarea {
+
+    min-height: 130px;
+
+    resize: vertical;
+
+}
+
+.full {
+
+    grid-column: 1 / -1;
+
+}
+
+.photo-box {
+
+    border: 2px dashed #bbb;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 7px;
+
+    background: #fafafa;
+
+}
+
+.submit-button {
+
+    width: 100%;
+
+    background: #f5a623;
+
+    color: #111;
+
+    border: none;
+
+    padding: 16px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+}
+
+.notice {
+
+    background: #fff7e8;
+
+    border-left: 4px solid #f5a623;
+
+    padding: 15px;
+
+    margin-bottom: 25px;
+
+    font-size: 14px;
+
+}
+
+footer {
+
+    background: #101419;
+
+    color: #aaa;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 50px;
+
+}
+
+@media(max-width: 650px) {
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .full {
+
+        grid-column: auto;
+
+    }
+
+    .form-container {
+
+        margin: 20px;
+
+        padding: 25px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">EQUIP TRADE <span>ZA</span></div>
+
+    <a href="index.html">← Back to Marketplace</a>
+
+</header>
+
+<section class="hero">
+
+    <h1>List Your Equipment</h1>
+
+    <p>Advertise equipment for sale or rent across South Africa.</p>
+
+</section>
+
+<div class="form-container">
+
+<div class="notice">
+
+    Complete the information below to create your equipment listing.
+
+</div>
+
+<h2>Equipment Details</h2>
+
+<form id="equipmentForm">
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>Listing Type *</label>
+
+<select required>
+
+<option value="">Select</option>
+
+<option>For Sale</option>
+
+<option>For Rent</option>
+
+<option>For Sale or Rent</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Category *</label>
+
+<select required>
+
+<option value="">Select category</option>
+
+<option>Mining Equipment</option>
+
+<option>Construction Equipment</option>
+
+<option>Agricultural Equipment</option>
+
+<option>Earthmoving Equipment</option>
+
+<option>Trucks & Transport</option>
+
+<option>Industrial Equipment</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Equipment Title *</label>
+
+<input type="text" placeholder="Example: CAT 320 Excavator" required>
+
+</div>
+
+<div class="field">
+
+<label>Make / Manufacturer *</label>
+
+<input type="text" placeholder="Example: Caterpillar" required>
+
+</div>
+
+<div class="field">
+
+<label>Model</label>
+
+<input type="text" placeholder="Example: 320D">
+
+</div>
+
+<div class="field">
+
+<label>Year</label>
+
+<input type="number" placeholder="Example: 2019">
+
+</div>
+
+<div class="field">
+
+<label>Condition *</label>
+
+<select required>
+
+<option value="">Select condition</option>
+
+<option>New</option>
+
+<option>Used - Excellent</option>
+
+<option>Used - Good</option>
+
+<option>Used - Fair</option>
+
+<option>Needs Repair</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Price (R)</label>
+
+<input type="number" placeholder="Example: 1250000">
+
+</div>
+
+<div class="field">
+
+<label>Province *</label>
+
+<select required>
+
+<option value="">Select province</option>
+
+<option>Gauteng</option>
+
+<option>Mpumalanga</option>
+
+<option>Limpopo</option>
+
+<option>North West</option>
+
+<option>Free State</option>
+
+<option>KwaZulu-Natal</option>
+
+<option>Western Cape</option>
+
+<option>Eastern Cape</option>
+
+<option>Northern Cape</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Town / City *</label>
+
+<input type="text" placeholder="Example: Rustenburg" required>
+
+</div>
+
+<div class="field full">
+
+<label>Description *</label>
+
+<textarea placeholder="Describe the equipment, operating hours, service history, specifications and any other important information." required></textarea>
+
+</div>
+
+<div class="field full">
+
+<label>Equipment Photos</label>
+
+<div class="photo-box">
+
+<p><strong>Upload equipment photos</strong></p>
+
+<input type="file" accept="image/*" multiple>
+
+<p>Multiple photos can be selected.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<h2>Seller Details</h2>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>Seller / Company Name *</label>
+
+<input type="text" required>
+
+</div>
+
+<div class="field">
+
+<label>Contact Person *</label>
+
+<input type="text" required>
+
+</div>
+
+<div class="field">
+
+<label>Phone Number *</label>
+
+<input type="tel" placeholder="Example: 082 123 4567" required>
+
+</div>
+
+<div class="field">
+
+<label>WhatsApp Number</label>
+
+<input type="tel" placeholder="Example: 082 123 4567">
+
+</div>
+
+<div class="field full">
+
+<label>Email Address *</label>
+
+<input type="email" placeholder="name@company.co.za" required>
+
+</div>
+
+</div>
+
+<button type="submit" class="submit-button">
+
+Submit Equipment Listing
+
+</button>
+
+</form>
+
+</div>
+
+<footer>
+
+© 2026 Equip Trade ZA — South Africa's Equipment Marketplace
+
+</footer>
+
+<script>
+
+document.getElementById("equipmentForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    alert(
+
+        "The listing form is working! The next step is connecting it to our database so listings can be saved."
+
+    );
+
+});
+
+</script>
+
+</body>
+
+</html>
