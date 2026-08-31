@@ -4,185 +4,467 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mine Trade ZA | Mining Equipment Marketplace</title>
+<title>Mine Trade ZA | Mining Equipment Marketplace</title>
 
-    <style>
+<style>
 
-        * {
+* {
 
-            box-sizing: border-box;
+    box-sizing: border-box;
 
-            margin: 0;
+    margin: 0;
 
-            padding: 0;
+    padding: 0;
 
-        }
+}
 
-        body {
+body {
 
-            font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
 
-            background: #f4f4f4;
+    background: #f4f5f7;
 
-            color: #222;
+    color: #222;
 
-        }
+}
 
-        header {
+/* HEADER */
 
-            background: #161616;
+header {
 
-            color: white;
+    background: #151a20;
 
-            padding: 20px 8%;
+    color: white;
 
-            display: flex;
+    padding: 18px 7%;
 
-            justify-content: space-between;
+    display: flex;
 
-            align-items: center;
+    justify-content: space-between;
 
-        }
+    align-items: center;
 
-        .logo {
+}
 
-            font-size: 26px;
+.logo {
 
-            font-weight: bold;
+    font-size: 26px;
 
-        }
+    font-weight: bold;
 
-        .logo span {
+}
 
-            color: #f5a623;
+.logo span {
 
-        }
+    color: #f5a623;
 
-        nav a {
+}
 
-            color: white;
+nav a {
 
-            text-decoration: none;
+    color: white;
 
-            margin-left: 25px;
+    text-decoration: none;
 
-        }
+    margin-left: 25px;
 
-        .hero {
+    font-size: 15px;
 
-            background: #292929;
+}
 
-            color: white;
+/* HERO */
 
-            text-align: center;
+.hero {
 
-            padding: 90px 20px;
+    background: linear-gradient(135deg, #151a20, #343b43);
 
-        }
+    color: white;
 
-        .hero h1 {
+    text-align: center;
 
-            font-size: 48px;
+    padding: 85px 20px;
 
-            margin-bottom: 15px;
+}
 
-        }
+.hero h1 {
 
-        .hero p {
+    font-size: 46px;
 
-            font-size: 20px;
+    margin-bottom: 15px;
 
-            margin-bottom: 30px;
+}
 
-        }
+.hero p {
 
-        .button {
+    font-size: 19px;
 
-            display: inline-block;
+    margin-bottom: 30px;
 
-            background: #f5a623;
+    color: #ddd;
 
-            color: #111;
+}
 
-            padding: 14px 25px;
+.search-box {
 
-            margin: 5px;
+    max-width: 850px;
 
-            text-decoration: none;
+    margin: auto;
 
-            border-radius: 5px;
+    background: white;
 
-            font-weight: bold;
+    padding: 12px;
 
-        }
+    border-radius: 8px;
 
-        .section {
+    display: flex;
 
-            padding: 60px 8%;
+    gap: 10px;
 
-            text-align: center;
+}
 
-        }
+.search-box input,
 
-        .section h2 {
+.search-box select {
 
-            margin-bottom: 35px;
+    padding: 14px;
 
-            font-size: 32px;
+    border: 1px solid #ddd;
 
-        }
+    border-radius: 5px;
 
-        .cards {
+    flex: 1;
 
-            display: flex;
+}
 
-            gap: 20px;
+.search-box button {
 
-            justify-content: center;
+    background: #f5a623;
 
-            flex-wrap: wrap;
+    border: none;
 
-        }
+    padding: 14px 25px;
 
-        .card {
+    font-weight: bold;
 
-            background: white;
+    border-radius: 5px;
 
-            width: 280px;
+    cursor: pointer;
 
-            padding: 30px;
+}
 
-            border-radius: 8px;
+/* MAIN */
 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.container {
 
-        }
+    width: 86%;
 
-        .card h3 {
+    max-width: 1200px;
 
-            margin-bottom: 12px;
+    margin: auto;
 
-        }
+}
 
-        footer {
+.section {
 
-            background: #161616;
+    padding: 55px 0;
 
-            color: white;
+}
 
-            text-align: center;
+.section-title {
 
-            padding: 25px;
+    text-align: center;
 
-            margin-top: 30px;
+    font-size: 32px;
 
-        }
+    margin-bottom: 35px;
 
-    </style>
+}
+
+/* CATEGORIES */
+
+.categories {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+}
+
+.category {
+
+    background: white;
+
+    padding: 28px 15px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.category h3 {
+
+    margin-top: 10px;
+
+}
+
+/* LISTINGS */
+
+.listings {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+.listing {
+
+    background: white;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,.10);
+
+}
+
+.equipment-image {
+
+    height: 190px;
+
+    background: #d9dde1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #777;
+
+    font-size: 17px;
+
+}
+
+.listing-content {
+
+    padding: 20px;
+
+}
+
+.badge {
+
+    display: inline-block;
+
+    background: #f5a623;
+
+    padding: 5px 9px;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+}
+
+.rent {
+
+    background: #2e86de;
+
+    color: white;
+
+}
+
+.listing h3 {
+
+    margin-bottom: 10px;
+
+}
+
+.price {
+
+    color: #d67c00;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin: 12px 0;
+
+}
+
+.details {
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+.view-button {
+
+    display: block;
+
+    background: #1c232b;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    padding: 12px;
+
+    margin-top: 15px;
+
+    border-radius: 5px;
+
+}
+
+/* SELL SECTION */
+
+.sell-section {
+
+    background: #1c232b;
+
+    color: white;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+}
+
+.sell-section h2 {
+
+    font-size: 34px;
+
+    margin-bottom: 12px;
+
+}
+
+.sell-section p {
+
+    color: #ccc;
+
+    margin-bottom: 25px;
+
+}
+
+.orange-button {
+
+    display: inline-block;
+
+    background: #f5a623;
+
+    color: #111;
+
+    padding: 14px 25px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+}
+
+/* FOOTER */
+
+footer {
+
+    background: #101419;
+
+    color: #aaa;
+
+    text-align: center;
+
+    padding: 28px;
+
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    header {
+
+        display: block;
+
+        text-align: center;
+
+    }
+
+    nav {
+
+        margin-top: 15px;
+
+    }
+
+    nav a {
+
+        display: inline-block;
+
+        margin: 7px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 34px;
+
+    }
+
+    .search-box {
+
+        display: block;
+
+    }
+
+    .search-box input,
+
+    .search-box select,
+
+    .search-box button {
+
+        width: 100%;
+
+        margin: 5px 0;
+
+    }
+
+    .categories {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .listings {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -190,75 +472,243 @@
 
 <header>
 
-    <div class="logo">MINE TRADE <span>ZA</span></div>
+<div class="logo">
 
-    <nav>
+MINE TRADE <span>ZA</span>
 
-        <a href="#">Home</a>
+</div>
 
-        <a href="#">Equipment for Sale</a>
+<nav>
 
-        <a href="#">Equipment for Rent</a>
+<a href="#">Home</a>
 
-        <a href="#">Sell Equipment</a>
+<a href="#listings">Buy Equipment</a>
 
-    </nav>
+<a href="#listings">Rent Equipment</a>
+
+<a href="#sell">Sell Equipment</a>
+
+</nav>
 
 </header>
 
 <section class="hero">
 
-    <h1>South Africa's Mining Equipment Marketplace</h1>
+<h1>South Africa's Mining Equipment Marketplace</h1>
 
-    <p>
+<p>Buy, sell and rent mining equipment across South Africa.</p>
 
-        Buy, sell and rent mining equipment across South Africa.
+<div class="search-box">
 
-    </p>
+<input type="text" placeholder="What equipment are you looking for?">
 
-    <a class="button" href="#">Browse Equipment</a>
+<select>
 
-    <a class="button" href="#">List Your Equipment</a>
+<option>All Categories</option>
+
+<option>Excavators</option>
+
+<option>Loaders</option>
+
+<option>Drilling Equipment</option>
+
+<option>Crushers</option>
+
+<option>Trucks</option>
+
+<option>Other Equipment</option>
+
+</select>
+
+<select>
+
+<option>Buy or Rent</option>
+
+<option>For Sale</option>
+
+<option>For Rent</option>
+
+</select>
+
+<button>Search</button>
+
+</div>
 
 </section>
 
+<div class="container">
+
 <section class="section">
 
-    <h2>Find Mining Equipment</h2>
+<h2 class="section-title">Browse Equipment</h2>
 
-    <div class="cards">
+<div class="categories">
 
-        <div class="card">
+<div class="category">
 
-            <h3>Equipment for Sale</h3>
+<h2>🚜</h2>
 
-            <p>Browse used and new mining equipment available throughout South Africa.</p>
+<h3>Earthmoving</h3>
 
-        </div>
+</div>
 
-        <div class="card">
+<div class="category">
 
-            <h3>Equipment for Rent</h3>
+<h2>⛏️</h2>
 
-            <p>Find mining machinery and equipment available for short and long-term rental.</p>
+<h3>Drilling</h3>
 
-        </div>
+</div>
 
-        <div class="card">
+<div class="category">
 
-            <h3>Sell Your Equipment</h3>
+<h2>🚛</h2>
 
-            <p>Advertise your mining equipment directly to potential buyers.</p>
+<h3>Mining Trucks</h3>
 
-        </div>
+</div>
 
-    </div>
+<div class="category">
+
+<h2>⚙️</h2>
+
+<h3>Processing</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="listings">
+
+<h2 class="section-title">Featured Equipment</h2>
+
+<div class="listings">
+
+<div class="listing">
+
+<div class="equipment-image">
+
+Equipment Photo
+
+</div>
+
+<div class="listing-content">
+
+<span class="badge">FOR SALE</span>
+
+<h3>Underground Loader</h3>
+
+<div class="price">R1,250,000</div>
+
+<div class="details">
+
+📍 Gauteng<br>
+
+Condition: Used<br>
+
+Year: 2018
+
+</div>
+
+<a href="#" class="view-button">View Equipment</a>
+
+</div>
+
+</div>
+
+<div class="listing">
+
+<div class="equipment-image">
+
+Equipment Photo
+
+</div>
+
+<div class="listing-content">
+
+<span class="badge rent">FOR RENT</span>
+
+<h3>20 Ton Excavator</h3>
+
+<div class="price">R2,500 / day</div>
+
+<div class="details">
+
+📍 Mpumalanga<br>
+
+Condition: Used<br>
+
+Rental available
+
+</div>
+
+<a href="#" class="view-button">View Equipment</a>
+
+</div>
+
+</div>
+
+<div class="listing">
+
+<div class="equipment-image">
+
+Equipment Photo
+
+</div>
+
+<div class="listing-content">
+
+<span class="badge">FOR SALE</span>
+
+<h3>Mining Dump Truck</h3>
+
+<div class="price">R2,850,000</div>
+
+<div class="details">
+
+📍 North West<br>
+
+Condition: Used<br>
+
+Year: 2019
+
+</div>
+
+<a href="#" class="view-button">View Equipment</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<section class="sell-section" id="sell">
+
+<h2>Have Equipment to Sell or Rent?</h2>
+
+<p>
+
+Reach mining companies, contractors and equipment buyers across South Africa.
+
+</p>
+
+<a href="#" class="orange-button">
+
+List Your Equipment
+
+</a>
 
 </section>
 
 <footer>
 
-    <p>© 2026 Mine Trade ZA | South African Mining Equipment Marketplace</p>
+© 2026 Mine Trade ZA — Mining Equipment Marketplace
 
 </footer>
 
