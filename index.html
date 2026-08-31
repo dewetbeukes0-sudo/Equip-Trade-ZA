@@ -32,8 +32,6 @@ body {
 
 }
 
-/* HEADER */
-
 header {
 
     background: #151a20;
@@ -47,6 +45,12 @@ header {
     justify-content: space-between;
 
     align-items: center;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 10;
 
 }
 
@@ -70,13 +74,11 @@ nav a {
 
     text-decoration: none;
 
-    margin-left: 25px;
+    margin-left: 22px;
 
     font-size: 15px;
 
 }
-
-/* HERO */
 
 .hero {
 
@@ -86,7 +88,7 @@ nav a {
 
     text-align: center;
 
-    padding: 85px 20px;
+    padding: 80px 20px;
 
 }
 
@@ -110,7 +112,7 @@ nav a {
 
 .search-box {
 
-    max-width: 850px;
+    max-width: 1000px;
 
     margin: auto;
 
@@ -120,7 +122,9 @@ nav a {
 
     border-radius: 8px;
 
-    display: flex;
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr auto;
 
     gap: 10px;
 
@@ -136,8 +140,6 @@ nav a {
 
     border-radius: 5px;
 
-    flex: 1;
-
 }
 
 .search-box button {
@@ -146,7 +148,7 @@ nav a {
 
     border: none;
 
-    padding: 14px 25px;
+    padding: 14px 24px;
 
     font-weight: bold;
 
@@ -156,13 +158,11 @@ nav a {
 
 }
 
-/* MAIN */
-
 .container {
 
-    width: 86%;
+    width: 88%;
 
-    max-width: 1200px;
+    max-width: 1250px;
 
     margin: auto;
 
@@ -184,15 +184,13 @@ nav a {
 
 }
 
-/* CATEGORIES */
-
 .categories {
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
-    gap: 18px;
+    gap: 20px;
 
 }
 
@@ -200,23 +198,63 @@ nav a {
 
     background: white;
 
-    padding: 28px 15px;
+    padding: 30px 20px;
 
     text-align: center;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
 
-}
-
-.category h3 {
-
-    margin-top: 10px;
+    cursor: pointer;
 
 }
 
-/* LISTINGS */
+.category h2 {
+
+    font-size: 34px;
+
+    margin-bottom: 10px;
+
+}
+
+.category p {
+
+    color: #666;
+
+    margin-top: 8px;
+
+    font-size: 14px;
+
+}
+
+.filters {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+
+}
+
+.filters select {
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+}
 
 .listings {
 
@@ -232,7 +270,7 @@ nav a {
 
     background: white;
 
-    border-radius: 9px;
+    border-radius: 10px;
 
     overflow: hidden;
 
@@ -242,7 +280,7 @@ nav a {
 
 .equipment-image {
 
-    height: 190px;
+    height: 200px;
 
     background: #d9dde1;
 
@@ -252,7 +290,7 @@ nav a {
 
     justify-content: center;
 
-    color: #777;
+    color: #666;
 
     font-size: 17px;
 
@@ -314,7 +352,7 @@ nav a {
 
     font-size: 14px;
 
-    line-height: 1.7;
+    line-height: 1.8;
 
 }
 
@@ -338,15 +376,13 @@ nav a {
 
 }
 
-/* SELL SECTION */
-
 .sell-section {
 
     background: #1c232b;
 
     color: white;
 
-    padding: 60px 20px;
+    padding: 65px 20px;
 
     text-align: center;
 
@@ -386,8 +422,6 @@ nav a {
 
 }
 
-/* FOOTER */
-
 footer {
 
     background: #101419;
@@ -400,9 +434,31 @@ footer {
 
 }
 
-/* MOBILE */
+@media(max-width: 900px) {
 
-@media(max-width: 800px) {
+    .categories {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .listings {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .search-box,
+
+    .filters {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width: 650px) {
 
     header {
 
@@ -422,7 +478,7 @@ footer {
 
         display: inline-block;
 
-        margin: 7px;
+        margin: 6px;
 
     }
 
@@ -432,29 +488,7 @@ footer {
 
     }
 
-    .search-box {
-
-        display: block;
-
-    }
-
-    .search-box input,
-
-    .search-box select,
-
-    .search-box button {
-
-        width: 100%;
-
-        margin: 5px 0;
-
-    }
-
-    .categories {
-
-        grid-template-columns: repeat(2, 1fr);
-
-    }
+    .categories,
 
     .listings {
 
@@ -472,217 +506,457 @@ footer {
 
 <header>
 
-<div class="logo">
+    <div class="logo">EQUIP TRADE <span>ZA</span></div>
 
-EQUIP TRADE <span>ZA</span>
+    <nav>
 
-</div>
+        <a href="#">Home</a>
 
-<nav>
+        <a href="#categories">Categories</a>
 
-<a href="#">Home</a>
+        <a href="#listings">Buy Equipment</a>
 
-<a href="#listings">Buy Equipment</a>
+        <a href="#listings">Rent Equipment</a>
 
-<a href="#listings">Rent Equipment</a>
+        <a href="#sell">Sell Equipment</a>
 
-<a href="#sell">Sell Equipment</a>
-
-</nav>
+    </nav>
 
 </header>
 
 <section class="hero">
 
-<h1>South Africa's Equipment Marketplace</h1>
+    <h1>South Africa's Equipment Marketplace</h1>
 
-<p>Buy, sell and rent mining, construction and agricultural equipment across South Africa.</p>
+    <p>
 
-<div class="search-box">
+        Buy, sell and rent mining, construction, agricultural and industrial equipment across South Africa.
 
-<input type="text" placeholder="What equipment are you looking for?">
+    </p>
 
-<select>
+    <div class="search-box">
 
-<option>All Categories</option>
+        <input id="searchInput" type="text" placeholder="Search equipment, make or model">
 
-<option>Excavators</option>
+        <select id="categorySearch">
 
-<option>Loaders</option>
+            <option value="">All Categories</option>
 
-<option>Drilling Equipment</option>
+            <option>Mining Equipment</option>
 
-<option>Crushers</option>
+            <option>Construction Equipment</option>
 
-<option>Trucks</option>
+            <option>Agricultural Equipment</option>
 
-<option>Other Equipment</option>
+            <option>Earthmoving Equipment</option>
 
-</select>
+            <option>Trucks & Transport</option>
 
-<select>
+            <option>Industrial Equipment</option>
 
-<option>Buy or Rent</option>
+        </select>
 
-<option>For Sale</option>
+        <select id="typeSearch">
 
-<option>For Rent</option>
+            <option value="">Buy or Rent</option>
 
-</select>
+            <option value="sale">For Sale</option>
 
-<button>Search</button>
+            <option value="rent">For Rent</option>
 
-</div>
+        </select>
+
+        <button onclick="filterListings()">Search</button>
+
+    </div>
 
 </section>
 
 <div class="container">
 
-<section class="section">
+<section class="section" id="categories">
 
-<h2 class="section-title">Browse Equipment</h2>
+    <h2 class="section-title">Browse Categories</h2>
 
-<div class="categories">
+    <div class="categories">
 
-<div class="category">
+        <div class="category">
 
-<h2>🚜</h2>
+            <h2>⛏️</h2>
 
-<h3>Earthmoving</h3>
+            <h3>Mining Equipment</h3>
 
-</div>
+            <p>Loaders, drill rigs, crushers, screens and underground equipment.</p>
 
-<div class="category">
+        </div>
 
-<h2>⛏️</h2>
+        <div class="category">
 
-<h3>Drilling</h3>
+            <h2>🏗️</h2>
 
-</div>
+            <h3>Construction Equipment</h3>
 
-<div class="category">
+            <p>Excavators, graders, rollers, cranes and site machinery.</p>
 
-<h2>🚛</h2>
+        </div>
 
-<h3>Mining Trucks</h3>
+        <div class="category">
 
-</div>
+            <h2>🚜</h2>
 
-<div class="category">
+            <h3>Agricultural Equipment</h3>
 
-<h2>⚙️</h2>
+            <p>Tractors, harvesters, implements and farming machinery.</p>
 
-<h3>Processing</h3>
+        </div>
 
-</div>
+        <div class="category">
 
-</div>
+            <h2>🚧</h2>
+
+            <h3>Earthmoving Equipment</h3>
+
+            <p>Dozers, loaders, TLBs, excavators and earthmoving machines.</p>
+
+        </div>
+
+        <div class="category">
+
+            <h2>🚛</h2>
+
+            <h3>Trucks & Transport</h3>
+
+            <p>Tipper trucks, lowbeds, trailers and heavy transport vehicles.</p>
+
+        </div>
+
+        <div class="category">
+
+            <h2>⚙️</h2>
+
+            <h3>Industrial Equipment</h3>
+
+            <p>Generators, compressors, pumps and industrial machinery.</p>
+
+        </div>
+
+    </div>
 
 </section>
 
 <section class="section" id="listings">
 
-<h2 class="section-title">Featured Equipment</h2>
+    <h2 class="section-title">Equipment Listings</h2>
 
-<div class="listings">
+    <div class="filters">
 
-<div class="listing">
+        <select id="provinceFilter" onchange="filterListings()">
 
-<div class="equipment-image">
+            <option value="">All Provinces</option>
 
-Equipment Photo
+            <option>Gauteng</option>
 
-</div>
+            <option>Mpumalanga</option>
 
-<div class="listing-content">
+            <option>North West</option>
 
-<span class="badge">FOR SALE</span>
+            <option>Limpopo</option>
 
-<h3>Underground Loader</h3>
+            <option>Free State</option>
 
-<div class="price">R1,250,000</div>
+            <option>KwaZulu-Natal</option>
 
-<div class="details">
+            <option>Western Cape</option>
 
-📍 Gauteng<br>
+            <option>Eastern Cape</option>
 
-Condition: Used<br>
+            <option>Northern Cape</option>
 
-Year: 2018
+        </select>
 
-</div>
+        <select id="conditionFilter" onchange="filterListings()">
 
-<a href="#" class="view-button">View Equipment</a>
+            <option value="">Any Condition</option>
 
-</div>
+            <option>New</option>
 
-</div>
+            <option>Used</option>
 
-<div class="listing">
+        </select>
 
-<div class="equipment-image">
+        <select id="listingTypeFilter" onchange="filterListings()">
 
-Equipment Photo
+            <option value="">Sale or Rent</option>
 
-</div>
+            <option value="sale">For Sale</option>
 
-<div class="listing-content">
+            <option value="rent">For Rent</option>
 
-<span class="badge rent">FOR RENT</span>
+        </select>
 
-<h3>20 Ton Excavator</h3>
+        <select id="categoryFilter" onchange="filterListings()">
 
-<div class="price">R2,500 / day</div>
+            <option value="">All Categories</option>
 
-<div class="details">
+            <option>Mining Equipment</option>
 
-📍 Mpumalanga<br>
+            <option>Construction Equipment</option>
 
-Condition: Used<br>
+            <option>Agricultural Equipment</option>
 
-Rental available
+            <option>Earthmoving Equipment</option>
 
-</div>
+            <option>Trucks & Transport</option>
 
-<a href="#" class="view-button">View Equipment</a>
+            <option>Industrial Equipment</option>
 
-</div>
+        </select>
 
-</div>
+    </div>
 
-<div class="listing">
+    <div class="listings" id="listingGrid">
 
-<div class="equipment-image">
+        <div class="listing"
 
-Equipment Photo
+            data-title="Underground Loader"
 
-</div>
+            data-category="Mining Equipment"
 
-<div class="listing-content">
+            data-type="sale"
 
-<span class="badge">FOR SALE</span>
+            data-province="Gauteng"
 
-<h3>Mining Dump Truck</h3>
+            data-condition="Used">
 
-<div class="price">R2,850,000</div>
+            <div class="equipment-image">Equipment Photo</div>
 
-<div class="details">
+            <div class="listing-content">
 
-📍 North West<br>
+                <span class="badge">FOR SALE</span>
 
-Condition: Used<br>
+                <h3>Underground Loader</h3>
 
-Year: 2019
+                <div class="price">R1,250,000</div>
 
-</div>
+                <div class="details">
 
-<a href="#" class="view-button">View Equipment</a>
+                    📍 Gauteng<br>
 
-</div>
+                    Category: Mining Equipment<br>
 
-</div>
+                    Condition: Used<br>
 
-</div>
+                    Year: 2018
+
+                </div>
+
+                <a href="#" class="view-button">View Equipment</a>
+
+            </div>
+
+        </div>
+
+        <div class="listing"
+
+            data-title="20 Ton Excavator"
+
+            data-category="Earthmoving Equipment"
+
+            data-type="rent"
+
+            data-province="Mpumalanga"
+
+            data-condition="Used">
+
+            <div class="equipment-image">Equipment Photo</div>
+
+            <div class="listing-content">
+
+                <span class="badge rent">FOR RENT</span>
+
+                <h3>20 Ton Excavator</h3>
+
+                <div class="price">R2,500 / day</div>
+
+                <div class="details">
+
+                    📍 Mpumalanga<br>
+
+                    Category: Earthmoving Equipment<br>
+
+                    Condition: Used<br>
+
+                    Rental available
+
+                </div>
+
+                <a href="#" class="view-button">View Equipment</a>
+
+            </div>
+
+        </div>
+
+        <div class="listing"
+
+            data-title="Mining Dump Truck"
+
+            data-category="Trucks & Transport"
+
+            data-type="sale"
+
+            data-province="North West"
+
+            data-condition="Used">
+
+            <div class="equipment-image">Equipment Photo</div>
+
+            <div class="listing-content">
+
+                <span class="badge">FOR SALE</span>
+
+                <h3>Mining Dump Truck</h3>
+
+                <div class="price">R2,850,000</div>
+
+                <div class="details">
+
+                    📍 North West<br>
+
+                    Category: Trucks & Transport<br>
+
+                    Condition: Used<br>
+
+                    Year: 2019
+
+                </div>
+
+                <a href="#" class="view-button">View Equipment</a>
+
+            </div>
+
+        </div>
+
+        <div class="listing"
+
+            data-title="John Deere Tractor"
+
+            data-category="Agricultural Equipment"
+
+            data-type="sale"
+
+            data-province="Free State"
+
+            data-condition="Used">
+
+            <div class="equipment-image">Equipment Photo</div>
+
+            <div class="listing-content">
+
+                <span class="badge">FOR SALE</span>
+
+                <h3>John Deere Tractor</h3>
+
+                <div class="price">R780,000</div>
+
+                <div class="details">
+
+                    📍 Free State<br>
+
+                    Category: Agricultural Equipment<br>
+
+                    Condition: Used<br>
+
+                    Year: 2020
+
+                </div>
+
+                <a href="#" class="view-button">View Equipment</a>
+
+            </div>
+
+        </div>
+
+        <div class="listing"
+
+            data-title="Mobile Generator"
+
+            data-category="Industrial Equipment"
+
+            data-type="rent"
+
+            data-province="Gauteng"
+
+            data-condition="Used">
+
+            <div class="equipment-image">Equipment Photo</div>
+
+            <div class="listing-content">
+
+                <span class="badge rent">FOR RENT</span>
+
+                <h3>Mobile Generator</h3>
+
+                <div class="price">R1,200 / day</div>
+
+                <div class="details">
+
+                    📍 Gauteng<br>
+
+                    Category: Industrial Equipment<br>
+
+                    Condition: Used<br>
+
+                    Diesel generator
+
+                </div>
+
+                <a href="#" class="view-button">View Equipment</a>
+
+            </div>
+
+        </div>
+
+        <div class="listing"
+
+            data-title="Road Roller"
+
+            data-category="Construction Equipment"
+
+            data-type="sale"
+
+            data-province="KwaZulu-Natal"
+
+            data-condition="Used">
+
+            <div class="equipment-image">Equipment Photo</div>
+
+            <div class="listing-content">
+
+                <span class="badge">FOR SALE</span>
+
+                <h3>Road Roller</h3>
+
+                <div class="price">R650,000</div>
+
+                <div class="details">
+
+                    📍 KwaZulu-Natal<br>
+
+                    Category: Construction Equipment<br>
+
+                    Condition: Used<br>
+
+                    Year: 2017
+
+                </div>
+
+                <a href="#" class="view-button">View Equipment</a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -690,27 +964,111 @@ Year: 2019
 
 <section class="sell-section" id="sell">
 
-<h2>Have Equipment to Sell or Rent?</h2>
+    <h2>Have Equipment to Sell or Rent?</h2>
 
-<p>
+    <p>
 
-Reach mining companies, contractors and equipment buyers across South Africa.
+        Reach buyers, contractors, farmers and companies across South Africa.
 
-</p>
+    </p>
 
-<a href="#" class="orange-button">
+    <a href="list-equipment.html" class="orange-button">
 
-List Your Equipment
+        List Your Equipment
 
-</a>
+    </a>
 
 </section>
 
 <footer>
 
-© 2026 Equip Trade ZA — Equipment Marketplace
+    © 2026 Equip Trade ZA — South Africa's Equipment Marketplace
 
 </footer>
+
+<script>
+
+function filterListings() {
+
+    const searchText = document.getElementById("searchInput").value.toLowerCase();
+
+    const categorySearch = document.getElementById("categorySearch").value;
+
+    const typeSearch = document.getElementById("typeSearch").value;
+
+    const province = document.getElementById("provinceFilter").value;
+
+    const condition = document.getElementById("conditionFilter").value;
+
+    const listingType = document.getElementById("listingTypeFilter").value;
+
+    const categoryFilter = document.getElementById("categoryFilter").value;
+
+    const listings = document.querySelectorAll(".listing");
+
+    listings.forEach(function(listing) {
+
+        const title = listing.dataset.title.toLowerCase();
+
+        const category = listing.dataset.category;
+
+        const type = listing.dataset.type;
+
+        const listingProvince = listing.dataset.province;
+
+        const listingCondition = listing.dataset.condition;
+
+        let show = true;
+
+        if (searchText && !title.includes(searchText)) {
+
+            show = false;
+
+        }
+
+        if (categorySearch && category !== categorySearch) {
+
+            show = false;
+
+        }
+
+        if (typeSearch && type !== typeSearch) {
+
+            show = false;
+
+        }
+
+        if (province && listingProvince !== province) {
+
+            show = false;
+
+        }
+
+        if (condition && listingCondition !== condition) {
+
+            show = false;
+
+        }
+
+        if (listingType && type !== listingType) {
+
+            show = false;
+
+        }
+
+        if (categoryFilter && category !== categoryFilter) {
+
+            show = false;
+
+        }
+
+        listing.style.display = show ? "block" : "none";
+
+    });
+
+}
+
+</script>
 
 </body>
 
