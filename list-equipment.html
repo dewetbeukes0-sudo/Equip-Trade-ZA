@@ -315,15 +315,17 @@ footer {
 
 <h2>Equipment Details</h2>
 
-<form id="equipmentForm">
-
+<form id="equipmentForm" action="https://formsubmit.co/dewetbeukes0@gmail.com" method="POST">
+  <input type="hidden" name="_subject" value="New Equipment Listing - Equip Trade ZA"> 
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">    
 <div class="form-grid">
 
 <div class="field">
 
 <label>Listing Type *</label>
 
-<select required>
+<select name="listingType" required>
 
 <option value="">Select</option>
 
@@ -341,7 +343,7 @@ footer {
 
 <label>Category *</label>
 
-<select required>
+<select name="category" required>
 
 <option value="">Select category</option>
 
@@ -365,8 +367,7 @@ footer {
 
 <label>Equipment Title *</label>
 
-<input type="text" placeholder="Example: CAT 320 Excavator" required>
-
+<input type="text" name="title" placeholder="Example: CAT 320 Excavator" required>
 </div>
 
 <div class="field">
@@ -374,28 +375,28 @@ footer {
 <label>Make / Manufacturer *</label>
 
 <input type="text" placeholder="Example: Caterpillar" required>
-
 </div>
 
 <div class="field">
 
 <label>Model</label>
 
-<input type="text" placeholder="Example: 320D">
-
+<input type="text" name="model" placeholder="Example: 320D">
 </div>
 
 <div class="field">
 
 <label>Year</label>
 
-<input type="number" placeholder="Example: 2019">
+<input type="number" name="year" placeholder="Example: 2019">
 
 </div>
 
 <div class="field">
 
 <label>Condition *</label>
+
+<select name="condition" required>
 
 <select required>
 
@@ -419,7 +420,7 @@ footer {
 
 <label>Price (R)</label>
 
-<input type="number" placeholder="Example: 1250000">
+<input type="number" name="price" placeholder="Example: 1250000">
 
 </div>
 
@@ -427,7 +428,7 @@ footer {
 
 <label>Province *</label>
 
-<select required>
+<select name="province" required>
 
 <option value="">Select province</option>
 
@@ -457,7 +458,7 @@ footer {
 
 <label>Town / City *</label>
 
-<input type="text" placeholder="Example: Rustenburg" required>
+<input type="text" name="city" placeholder="Example: Rustenburg" required>
 
 </div>
 
@@ -465,7 +466,7 @@ footer {
 
 <label>Description *</label>
 
-<textarea placeholder="Describe the equipment, operating hours, service history, specifications and any other important information." required></textarea>
+<textarea name="description" placeholder="Describe the equipment, operating hours, service history, specifications and any other important information." required>
 
 </div>
 
@@ -477,7 +478,7 @@ footer {
 
 <p><strong>Upload equipment photos</strong></p>
 
-<input type="file" accept="image/*" multiple>
+<input type="file" id="equipmentPhotos" accept="image/*" multiple>
 
 <p>Multiple photos can be selected.</p>
 
@@ -495,7 +496,7 @@ footer {
 
 <label>Seller / Company Name *</label>
 
-<input type="text" required>
+<input type="text" name="sellerName" required>
 
 </div>
 
@@ -503,7 +504,7 @@ footer {
 
 <label>Contact Person *</label>
 
-<input type="text" required>
+<input type="text" name="contactPerson" required>
 
 </div>
 
@@ -511,7 +512,7 @@ footer {
 
 <label>Phone Number *</label>
 
-<input type="tel" placeholder="Example: 082 123 4567" required>
+<input type="tel" name="phone" placeholder="Example: 082 123 4567" required>
 
 </div>
 
@@ -519,7 +520,7 @@ footer {
 
 <label>WhatsApp Number</label>
 
-<input type="tel" placeholder="Example: 082 123 4567">
+<input type="tel" name="whatsapp" placeholder="Example: 082 123 4567">
 
 </div>
 
@@ -527,7 +528,7 @@ footer {
 
 <label>Email Address *</label>
 
-<input type="email" placeholder="name@company.co.za" required>
+<input type="email" name="email" placeholder="name@company.co.za" required>
 
 </div>
 
