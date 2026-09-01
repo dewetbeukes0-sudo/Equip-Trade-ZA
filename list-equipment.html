@@ -315,10 +315,8 @@ footer {
 
 <h2>Equipment Details</h2>
 
-<form id="equipmentForm" action="https://formsubmit.co/dewetbeukes0@gmail.com" method="POST">
-  <input type="hidden" name="_subject" value="New Equipment Listing - Equip Trade ZA"> 
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">    
+<form id="equipmentForm">
+    
 <div class="form-grid">
 
 <div class="field">
@@ -588,7 +586,7 @@ document.getElementById("equipmentForm").addEventListener("submit", async functi
 
                 const { error: uploadError } = await supabaseClient.storage
 
-                    .from("EQUIPMENT-IMAGES")
+                    .from("equipment-images")
 
                     .upload(filePath, file);
 
@@ -600,7 +598,7 @@ document.getElementById("equipmentForm").addEventListener("submit", async functi
 
                 const { data: publicUrlData } = supabaseClient.storage
 
-                    .from("EQUIPMENT-IMAGES")
+                    .from("equipment-images")
 
                     .getPublicUrl(filePath);
 
@@ -646,7 +644,7 @@ document.getElementById("equipmentForm").addEventListener("submit", async functi
 
             listing_status: "active",
 
-            image_urls: imageUrls,
+            image_urls: JSON.stringify(imageUrls),
 
             seller_id: user.id
 
