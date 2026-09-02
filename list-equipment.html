@@ -667,12 +667,9 @@ alert("Supabase insert error: " + insertError.message);
         form.reset();
 
     } catch (error) {
-
+alert("Listing submission error: " + error.message);
         console.error("Listing submission error:", error);
-
-        alert("There was a problem submitting your listing: " + error.message);
-
-    }
+ }
 
 });
 
