@@ -715,250 +715,7 @@ footer {
     </div>
 
     <div class="listings" id="listingGrid">
-
-        <div class="listing"
-
-            data-title="Underground Loader"
-
-            data-category="Mining Equipment"
-
-            data-type="sale"
-
-            data-province="Gauteng"
-
-            data-condition="Used">
-
-<div class="equipment-image"><img src="underground-loader.jpg" alt="Underground Loader" style="width:100%; height:100%; object-fit:cover;"></div>
-            <div class="listing-content">
-
-                <span class="badge">FOR SALE</span>
-
-                <h3>Underground Loader</h3>
-
-                <div class="price">R1,250,000</div>
-
-                <div class="details">
-
-                    📍 Gauteng<br>
-
-                    Category: Mining Equipment<br>
-
-                    Condition: Used<br>
-
-                    Year: 2018
-
-                </div>
-
-                <a href="#" class="view-button">View Equipment</a>
-
-            </div>
-
-        </div>
-
-        <div class="listing"
-
-            data-title="20 Ton Excavator"
-
-            data-category="Earthmoving Equipment"
-
-            data-type="rent"
-
-            data-province="Mpumalanga"
-
-            data-condition="Used">
-
-            <div class="equipment-image">Equipment Photo</div>
-
-            <div class="listing-content">
-
-                <span class="badge rent">FOR RENT</span>
-
-                <h3>20 Ton Excavator</h3>
-
-                <div class="price">R2,500 / day</div>
-
-                <div class="details">
-
-                    📍 Mpumalanga<br>
-
-                    Category: Earthmoving Equipment<br>
-
-                    Condition: Used<br>
-
-                    Rental available
-
-                </div>
-
-                <a href="#" class="view-button">View Equipment</a>
-
-            </div>
-
-        </div>
-
-        <div class="listing"
-
-            data-title="Mining Dump Truck"
-
-            data-category="Trucks & Transport"
-
-            data-type="sale"
-
-            data-province="North West"
-
-            data-condition="Used">
-
-            <div class="equipment-image">Equipment Photo</div>
-
-            <div class="listing-content">
-
-                <span class="badge">FOR SALE</span>
-
-                <h3>Mining Dump Truck</h3>
-
-                <div class="price">R2,850,000</div>
-
-                <div class="details">
-
-                    📍 North West<br>
-
-                    Category: Trucks & Transport<br>
-
-                    Condition: Used<br>
-
-                    Year: 2019
-
-                </div>
-
-                <a href="#" class="view-button">View Equipment</a>
-
-            </div>
-
-        </div>
-
-        <div class="listing"
-
-            data-title="John Deere Tractor"
-
-            data-category="Agricultural Equipment"
-
-            data-type="sale"
-
-            data-province="Free State"
-
-            data-condition="Used">
-
-            <div class="equipment-image">Equipment Photo</div>
-
-            <div class="listing-content">
-
-                <span class="badge">FOR SALE</span>
-
-                <h3>John Deere Tractor</h3>
-
-                <div class="price">R780,000</div>
-
-                <div class="details">
-
-                    📍 Free State<br>
-
-                    Category: Agricultural Equipment<br>
-
-                    Condition: Used<br>
-
-                    Year: 2020
-
-                </div>
-
-                <a href="#" class="view-button">View Equipment</a>
-
-            </div>
-
-        </div>
-
-        <div class="listing"
-
-            data-title="Mobile Generator"
-
-            data-category="Industrial Equipment"
-
-            data-type="rent"
-
-            data-province="Gauteng"
-
-            data-condition="Used">
-
-            <div class="equipment-image">Equipment Photo</div>
-
-            <div class="listing-content">
-
-                <span class="badge rent">FOR RENT</span>
-
-                <h3>Mobile Generator</h3>
-
-                <div class="price">R1,200 / day</div>
-
-                <div class="details">
-
-                    📍 Gauteng<br>
-
-                    Category: Industrial Equipment<br>
-
-                    Condition: Used<br>
-
-                    Diesel generator
-
-                </div>
-
-                <a href="#" class="view-button">View Equipment</a>
-
-            </div>
-
-        </div>
-
-        <div class="listing"
-
-            data-title="Road Roller"
-
-            data-category="Construction Equipment"
-
-            data-type="sale"
-
-            data-province="KwaZulu-Natal"
-
-            data-condition="Used">
-
-            <div class="equipment-image">Equipment Photo</div>
-
-            <div class="listing-content">
-
-                <span class="badge">FOR SALE</span>
-
-                <h3>Road Roller</h3>
-
-                <div class="price">R650,000</div>
-
-                <div class="details">
-
-                    📍 KwaZulu-Natal<br>
-
-                    Category: Construction Equipment<br>
-
-                    Condition: Used<br>
-
-                    Year: 2017
-
-                </div>
-
-                <a href="#" class="view-button">View Equipment</a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
+        
 </div>
 
 <section class="sell-section" id="sell">
@@ -1068,7 +825,83 @@ function filterListings() {
 }
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+
+  const SUPABASE_URL = "https://lfdxocqmsgqxsmgftzb.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_21B7UyesBlaTKjiuONKxzw_g46oi80w";
+
+  const supabaseClient = supabase.createClient(
+
+    SUPABASE_URL,
+
+    SUPABASE_PUBLISHABLE_KEY
+
+  );
+
+  async function loadListings() {
+
+    const listingGrid = document.getElementById("listingGrid");
+
+    const { data, error } = await supabaseClient
+
+      .from("equipment_listings")
+
+      .select("*")
+
+      .order("created_at", { ascending: false });
+
+    if (error) {
+
+      console.error("Error loading listings:", error);
+
+      listingGrid.innerHTML = "<p>Unable to load equipment listings.</p>";
+
+      return;
+
+    }
+
+    listingGrid.innerHTML = "";
+
+    data.forEach((listing) => {
+
+      const card = document.createElement("div");
+
+      card.className = "listing";
+
+      card.innerHTML = `
+
+        <h3>${listing.equipment_title || "Equipment"}</h3>
+
+        <p><strong>Category:</strong> ${listing.category || ""}</p>
+
+        <p><strong>Make:</strong> ${listing.make || ""}</p>
+
+        <p><strong>Model:</strong> ${listing.model || ""}</p>
+
+        <p><strong>Year:</strong> ${listing.year || ""}</p>
+
+        <p><strong>Condition:</strong> ${listing.condition || ""}</p>
+
+        <p><strong>Price:</strong> R${listing.price || ""}</p>
+
+        <p><strong>Location:</strong> ${listing.town_city || ""}, ${listing.province || ""}</p>
+
+        <p>${listing.description || ""}</p>
+
+      `;
+
+      listingGrid.appendChild(card);
+
+    });
+
+  }
+
+  loadListings();
+
+</script>
 </body>
 
 </html>
