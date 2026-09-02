@@ -582,8 +582,8 @@ alert("Submit handler started");
 
                 const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, "");
 
-                const filePath = ${user.id}/${Date.now()}-${i}-${safeName};
-
+                const filePath = `${user.id}/${Date.now()}-${i}-${safeName}`;
+               
                 const { error: uploadError } = await supabaseClient.storage
 
                     .from("equipment-images")
@@ -608,7 +608,7 @@ alert("Submit handler started");
 
         }
 
-        const listingType = form.elements["listing_type"].value;
+        const listingType = form.elements["listing-type"].value;
 
         const listing = {
 
