@@ -657,7 +657,7 @@ document.getElementById("equipmentForm").addEventListener("submit", async functi
             .insert([listing]);
 
         if (insertError) {
-
+alert("Supabase insert error: " + insertError.message);
             throw insertError;
 
         }
