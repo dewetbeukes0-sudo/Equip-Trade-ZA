@@ -854,7 +854,7 @@ function filterListings() {
       .order("created_at", { ascending: false });
 
     if (error) {
-        
+
 alert("Supabase load error: " + error.message);
         
       console.error("Error loading listings:", error);
