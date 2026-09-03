@@ -875,6 +875,12 @@ alert("Supabase load error: " + error.message);
 
       card.innerHTML = `
 
+      ${listing.image_urls && listing.image_urls.length
+
+  ? <img src="${Array.isArray(listing.image_urls) ? listing.image_urls[0] : JSON.parse(listing.image_urls)[0]}" alt="${listing.equipment_title || 'Equipment'}">
+
+  : ""}
+
         <h3>${listing.equipment_title || "Equipment"}</h3>
 
         <p><strong>Category:</strong> ${listing.category || ""}</p>
