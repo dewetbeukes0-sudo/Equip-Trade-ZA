@@ -917,6 +917,7 @@ ${imageUrl ? '<img src="' + imageUrl + '" alt="Equipment" style="width:100%; hei
 
         <p>${listing.description || ""}</p>
 
+        <a href="equipment-details.html?id=${listing.id}" class="view-button">View Equipment</a>
       `;
 
       listingGrid.appendChild(card);
