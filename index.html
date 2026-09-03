@@ -873,15 +873,33 @@ alert("Supabase load error: " + error.message);
 
       card.className = "listing";
 
+       let imageUrl = "";
+
+if (listing.image_urls) {
+
+  try {
+
+    const images = Array.isArray(listing.image_urls)
+
+      ? listing.image_urls
+
+      : JSON.parse(listing.image_urls);
+
+    imageUrl = images[0] || "";
+
+  } catch (e) {
+
+    console.error("Image URL error:", e);
+
+  }
+
+} 
+
       card.innerHTML = `
-
-      ${listing.image_urls && listing.image_urls.length
-
-  ? <img src="${Array.isArray(listing.image_urls) ? listing.image_urls[0] : JSON.parse(listing.image_urls)[0]}" alt="${listing.equipment_title || 'Equipment'}">
-
-  : ""}
-
-        <h3>${listing.equipment_title || "Equipment"}</h3>
+      
+${imageUrl ? '<img src="' + imageUrl + '" alt="Equipment" style="width:100%; height:220px; object-fit:cover;">' : ''}
+    
+             <h3>${listing.equipment_title || "Equipment"}</h3>
 
         <p><strong>Category:</strong> ${listing.category || ""}</p>
 
