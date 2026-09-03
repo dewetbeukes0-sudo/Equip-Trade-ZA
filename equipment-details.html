@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Equipment Details | Equip Trade ZA</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      margin: 0;
+
+      background: #f4f4f4;
+
+      color: #222;
+
+    }
+
+    .container {
+
+      max-width: 1000px;
+
+      margin: 40px auto;
+
+      padding: 20px;
+
+    }
+
+    .card {
+
+      background: white;
+
+      padding: 25px;
+
+      border-radius: 10px;
+
+    }
+
+    .main-image {
+
+      width: 100%;
+
+      max-height: 500px;
+
+      object-fit: cover;
+
+      border-radius: 8px;
+
+      margin-bottom: 20px;
+
+    }
+
+    .back-link {
+
+      display: inline-block;
+
+      margin-bottom: 20px;
+
+      text-decoration: none;
+
+    }
+
+    .contact-box {
+
+      margin-top: 25px;
+
+      padding: 20px;
+
+      background: #f7f7f7;
+
+      border-radius: 8px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="back-link">← Back to Equipment</a>
+
+  <div class="card" id="equipmentDetails">
+
+    <p>Loading equipment...</p>
+
+  </div>
+
+</div>
+
+<script>
+
+  const SUPABASE_URL = "https://lfdxocqqmsgqxsmgftzb.supabase.co/storage/v1/object/public/equipment-images/9c061192-e81c-46d0-88e7-4a28698d3809/1788382139867-0-320D2.jfif";
+
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_21B7UyesBlaTKjiuONKxzw_g46oi80w";
+
+  const supabaseClient = supabase.createClient(
+
+    SUPABASE_URL,
+
+    SUPABASE_PUBLISHABLE_KEY
+
+  );
+
+  async function loadEquipmentDetails() {
+
+    const params = new URLSearchParams(window.location.search);
+
+    const listingId = params.get("id");
+
+    const container = document.getElementById("equipmentDetails");
+
+    if (!listingId) {
+
+      container.innerHTML = "<p>Equipment listing not found.</p>";
+
+      return;
+
+    }
+
+    const { data: listing, error } = await supabaseClient
+
+      .from("equipment_listings")
+
+      .select("*")
+
+      .eq("id", listingId)
+
+      .single();
+
+    if (error || !listing) {
+
+      console.error(error);
+
+      container.innerHTML = "<p>Unable to load this equipment listing.</p>";
+
+      return;
+
+    }
+
+    let imageUrl = "";
+
+    if (listing.image_urls) {
+
+      try {
+
+        const images = Array.isArray(listing.image_urls)
+
+          ? listing.image_urls
+
+          : JSON.parse(listing.image_urls);
+
+        imageUrl = images[0] || "";
+
+      } catch (e) {
+
+        console.error("Image error:", e);
+
+      }
+
+    }
+
+    container.innerHTML = `
+
+      ${imageUrl ? '<img class="main-image" src="' + imageUrl + '" alt="Equipment">' : ''}
+
+      <h1>${listing.equipment_title || "Equipment"}</h1>
+
+      <p><strong>Listing Type:</strong> ${listing.listing_type || ""}</p>
+
+      <p><strong>Category:</strong> ${listing.category || ""}</p>
+
+      <p><strong>Make:</strong> ${listing.make || ""}</p>
+
+      <p><strong>Model:</strong> ${listing.model || ""}</p>
+
+      <p><strong>Year:</strong> ${listing.year || ""}</p>
+
+      <p><strong>Condition:</strong> ${listing.condition || ""}</p>
+
+      <p><strong>Price:</strong> R${listing.price || ""}</p>
+
+      <p><strong>Location:</strong> ${listing.town_city || ""}, ${listing.province || ""}</p>
+
+      <h3>Description</h3>
+
+      <p>${listing.description || ""}</p>
+
+      <div class="contact-box">
+
+        <h3>Seller Contact Details</h3>
+
+        <p><strong>Name:</strong> ${listing.seller_name || ""}</p>
+
+        <p><strong>WhatsApp:</strong> ${listing.whatsapp_number || ""}</p>
+
+        <p><strong>Email:</strong> ${listing.seller_email || ""}</p>
+
+      </div>
+
+    `;
+
+  }
+
+  loadEquipmentDetails();
+
+</script>
+
+</body>
+
+</html>
