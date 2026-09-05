@@ -913,9 +913,23 @@ if (listing.image_urls) {
 
 } 
 
+     const displayPrice = listing.price
+
+  ? "R" + Number(listing.price).toLocaleString("en-ZA")
+
+  : "Price on request";
+
+const typeBadge = (listing.listing_type || "").toLowerCase().includes("rent")
+
+  ? "For Rent"
+
+  : "For Sale";   
+
       card.innerHTML = `
       
 ${imageUrl ? '<img src="' + imageUrl + '" alt="Equipment" style="width:100%; height:220px; object-fit:cover;">' : ''}
+
+<span class="listing-badge">${typeBadge}</span>
     
              <h3>${listing.equipment_title || "Equipment"}</h3>
 
@@ -929,7 +943,7 @@ ${imageUrl ? '<img src="' + imageUrl + '" alt="Equipment" style="width:100%; hei
 
         <p><strong>Condition:</strong> ${listing.condition || ""}</p>
 
-        <p><strong>Price:</strong> R${listing.price || ""}</p>
+       <p class="listing-price">${displayPrice}</p>
 
         <p><strong>Location:</strong> ${listing.town_city || ""}, ${listing.province || ""}</p>
 
