@@ -800,8 +800,8 @@ function filterListings() {
 
         }
 
-        if (condition && listingCondition !== condition) {
-
+        if (condition && !listingCondition.toLowerCase().startsWith(condition.toLowerCase())) {
+            
             show = false;
 
         }
@@ -878,6 +878,8 @@ alert("Supabase load error: " + error.message);
 card.dataset.category = listing.category || "";
 
 card.dataset.province = listing.province || "";
+
+card.dataset.condition = listing.condition || "";        
 
 if ((listing.listing_type || "").toLowerCase().includes("rent")) {
 
