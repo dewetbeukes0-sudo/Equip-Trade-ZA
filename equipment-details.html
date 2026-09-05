@@ -204,9 +204,29 @@
 
        <p><strong>Name:</strong> ${listing.contact_name || ""}</p>
 
-<p><strong>WhatsApp:</strong> ${listing.contact_phone || ""}</p>
+<p>
 
-<p><strong>Email:</strong> ${listing.contact_email || ""}</p> 
+  <strong>WhatsApp:</strong>
+
+  <a href="https://wa.me/27${(listing.contact_phone || "").replace(/^0/, "").replace(/\D/g, "")}" target="_blank">
+
+    ${listing.contact_phone || ""}
+
+  </a>
+
+</p>
+
+<p>
+
+  <strong>Email:</strong>
+
+  <a href="mailto:${listing.contact_email || ""}">
+
+    ${listing.contact_email || ""}
+
+  </a>
+
+</p> 
 
       </div>
 
