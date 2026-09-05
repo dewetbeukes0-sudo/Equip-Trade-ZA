@@ -873,6 +873,22 @@ alert("Supabase load error: " + error.message);
 
       card.className = "listing";
 
+      card.dataset.title = listing.equipment_title || "";
+
+card.dataset.category = listing.category || "";
+
+card.dataset.province = listing.province || "";
+
+if ((listing.listing_type || "").toLowerCase().includes("rent")) {
+
+  card.dataset.type = "rent";
+
+} else {
+
+  card.dataset.type = "sale";
+
+}  
+
        let imageUrl = "";
 
 if (listing.image_urls) {
