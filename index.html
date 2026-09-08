@@ -651,6 +651,51 @@ footer {
   }
 
 }    
+
+.listing {
+
+  display: grid !important;
+
+  grid-template-columns: 380px 1fr !important;
+
+  gap: 24px;
+
+  align-items: start;
+
+}
+
+.listing img {
+
+  grid-column: 1 !important;
+
+  grid-row: 1 / span 20 !important;
+
+}
+
+.listing-badge,
+
+.listing h3,
+
+.listing p,
+
+.listing-price,
+
+.view-button {
+
+  grid-column: 2 !important;
+
+}
+
+@media (max-width: 600px) {
+
+  .listing {
+
+    display: block !important;
+
+  }
+
+}
+    
 </style>
 
 </head>
