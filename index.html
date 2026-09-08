@@ -695,6 +695,52 @@ footer {
   }
 
 }
+
+.listing {
+
+  display: grid !important;
+
+  grid-template-columns: 380px 1fr !important;
+
+  gap: 24px;
+
+  align-items: start;
+
+}
+
+.listing img {
+
+  grid-column: 1 !important;
+
+  width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+}
+
+.listing-info {
+
+  grid-column: 2 !important;
+
+}
+
+@media (max-width: 600px) {
+
+  .listing {
+
+    display: block !important;
+
+  }
+
+  .listing-info {
+
+    display: block;
+
+  }
+
+}    
     
 </style>
 
@@ -1127,6 +1173,8 @@ const typeBadge = (listing.listing_type || "").toLowerCase().includes("rent")
       
 ${imageUrl ? '<img src="' + imageUrl + '" alt="Equipment" style="width:100%; height:auto; max-height:300px; object-fit:contain;">' : ''}
 
+<div class="listing-info">
+
 <span class="listing-badge">${typeBadge}</span>
     
              <h3>${listing.equipment_title || "Equipment"}</h3>
@@ -1148,6 +1196,9 @@ ${imageUrl ? '<img src="' + imageUrl + '" alt="Equipment" style="width:100%; hei
         <p>${listing.description || ""}</p>
 
         <a href="equipment-details.html?id=${listing.id}" class="view-button">View Equipment</a>
+
+        </div>
+        
       `;
 
       listingGrid.appendChild(card);
