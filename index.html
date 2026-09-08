@@ -544,6 +544,69 @@ footer {
   font-weight: bold;
 
 }
+.listing {
+
+  display: grid;
+
+  grid-template-columns: 320px 1fr;
+
+  gap: 24px;
+
+  align-items: start;
+
+}
+
+.listing img {
+
+  width: 100%;
+
+  height: 240px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+
+}
+
+.listing-badge,
+
+.listing h3,
+
+.listing p,
+
+.listing-price,
+
+.view-button {
+
+  grid-column: 2;
+
+}
+
+.listing img {
+
+  grid-column: 1;
+
+  grid-row: 1 / span 10;
+
+}
+
+@media (max-width: 768px) {
+
+  .listing {
+
+    display: block;
+
+  }
+
+  .listing img {
+
+    height: 220px;
+
+    margin-bottom: 15px;
+
+  }
+
+}    
 </style>
 
 </head>
