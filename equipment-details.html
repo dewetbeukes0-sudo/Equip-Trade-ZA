@@ -394,6 +394,132 @@
 
 }    
 
+ .enquiry-modal {
+
+  display: none;
+
+  position: fixed;
+
+  z-index: 9999;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+}
+
+.enquiry-modal-content {
+
+  background: white;
+
+  width: 100%;
+
+  max-width: 500px;
+
+  padding: 28px;
+
+  border-radius: 12px;
+
+  position: relative;
+
+  box-sizing: border-box;
+
+}
+
+.enquiry-modal-content h2 {
+
+  margin-top: 0;
+
+}
+
+.enquiry-modal-content label {
+
+  display: block;
+
+  font-weight: bold;
+
+  margin-top: 14px;
+
+  margin-bottom: 5px;
+
+}
+
+.enquiry-modal-content input,
+
+.enquiry-modal-content textarea {
+
+  width: 100%;
+
+  padding: 11px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  box-sizing: border-box;
+
+}
+
+.close-enquiry {
+
+  position: absolute;
+
+  top: 10px;
+
+  right: 14px;
+
+  border: none;
+
+  background: none;
+
+  font-size: 28px;
+
+  cursor: pointer;
+
+}
+
+.submit-enquiry-btn,
+
+.enquiry-btn {
+
+  background: #f2b705;
+
+  color: #111;
+
+  border: none;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+.submit-enquiry-btn {
+
+  width: 100%;
+
+  margin-top: 18px;
+
+}   
+
   </style>
 
 </head>
@@ -608,35 +734,15 @@ if (images.length > 0) {
 
   <div class="contact-box">
 
-    <h3>Seller Contact Details</h3>
+    <h3>Interested in this equipment?</h3>
 
-    <p>
+  <div class="contact-actions">
 
-      <strong>Name:</strong>
+  <button class="contact-btn enquiry-btn" onclick="openEnquiryForm()">
 
-      ${listing.contact_name || ""}
+    Enquire About This Equipment
 
-    </p>
-
-   <div class="contact-actions">
-
-  <a class="contact-btn whatsapp-btn"
-
-     href="https://wa.me/27${(listing.contact_phone || "").replace(/^0/, "").replace(/\D/g, "")}"
-
-     target="_blank">
-
-    WhatsApp Seller
-
-  </a>
-
-  <a class="contact-btn email-btn"
-
-     href="mailto:${listing.contact_email || ""}">
-
-    Email Seller
-
-  </a>
+  </button>
 
 </div>
 
@@ -698,7 +804,83 @@ function changeGalleryImage(direction) {
 
 }  
 
+function openEnquiryForm() {
+
+  const modal = document.getElementById("enquiryModal");
+
+  if (modal) {
+
+    modal.style.display = "flex";
+
+  }
+
+}
+
+function closeEnquiryForm() {
+
+  const modal = document.getElementById("enquiryModal");
+
+  if (modal) {
+
+    modal.style.display = "none";
+
+  }
+
+}
+
+window.addEventListener("click", function(event) {
+
+  const modal = document.getElementById("enquiryModal");
+
+  if (event.target === modal) {
+
+    closeEnquiryForm();
+
+  }
+
+});  
+
 </script>
+
+<div id="enquiryModal" class="enquiry-modal">
+
+  <div class="enquiry-modal-content">
+
+    <button class="close-enquiry" onclick="closeEnquiryForm()">×</button>
+
+    <h2>Enquire About This Equipment</h2>
+
+    <form id="enquiryForm">
+
+      <label for="buyerName">Name</label>
+
+      <input type="text" id="buyerName" required>
+
+      <label for="buyerPhone">Phone Number</label>
+
+      <input type="tel" id="buyerPhone" required>
+
+      <label for="buyerEmail">Email</label>
+
+      <input type="email" id="buyerEmail" required>
+
+      <label for="buyerMessage">Message</label>
+
+      <textarea id="buyerMessage" rows="4" required></textarea>
+
+      <button type="submit" class="submit-enquiry-btn">
+
+        Send Enquiry
+
+      </button>
+
+    </form>
+
+    <p id="enquiryStatus"></p>
+
+  </div>
+
+</div>  
 
 </body>
 
