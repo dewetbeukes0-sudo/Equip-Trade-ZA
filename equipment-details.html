@@ -346,6 +346,54 @@
 
 }    
 
+.contact-actions {
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 18px;
+
+  flex-wrap: wrap;
+
+}
+
+.contact-btn {
+
+  display: inline-block;
+
+  padding: 12px 18px;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+}
+
+.whatsapp-btn {
+
+  background: #25D366;
+
+  color: white !important;
+
+}
+
+.email-btn {
+
+  background: #2f3542;
+
+  color: white !important;
+
+}
+
+.contact-btn:hover {
+
+  opacity: 0.88;
+
+}    
+
   </style>
 
 </head>
@@ -490,11 +538,11 @@ if (images.length > 0) {
 
     </div>
 
-    <div class="details-price">
+   <div class="details-price">
 
-      R${listing.price || ""}
+  R${Number(listing.price || 0).toLocaleString("en-ZA")}
 
-    </div>
+</div>
 
   </div>
 
@@ -570,29 +618,27 @@ if (images.length > 0) {
 
     </p>
 
-    <p>
+   <div class="contact-actions">
 
-      <strong>WhatsApp:</strong>
+  <a class="contact-btn whatsapp-btn"
 
-      <a href="https://wa.me/27${(listing.contact_phone || "").replace(/^0/, "").replace(/\D/g, "")}" target="_blank">
+     href="https://wa.me/27${(listing.contact_phone || "").replace(/^0/, "").replace(/\D/g, "")}"
 
-        ${listing.contact_phone || ""}
+     target="_blank">
 
-      </a>
+    WhatsApp Seller
 
-    </p>
+  </a>
 
-    <p>
+  <a class="contact-btn email-btn"
 
-      <strong>Email:</strong>
+     href="mailto:${listing.contact_email || ""}">
 
-      <a href="mailto:${listing.contact_email || ""}">
+    Email Seller
 
-        ${listing.contact_email || ""}
+  </a>
 
-      </a>
-
-    </p>
+</div>
 
   </div>
 
