@@ -196,6 +196,156 @@
 
 }
 
+.details-card {
+
+  margin-top: 28px;
+
+  background: #fff;
+
+  border-radius: 12px;
+
+  padding: 24px;
+
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+
+}
+
+.details-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+
+}
+
+.details-header h1 {
+
+  margin: 10px 0 0;
+
+}
+
+.details-badge {
+
+  display: inline-block;
+
+  background: #2f3542;
+
+  color: white;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  font-weight: bold;
+
+}
+
+.details-price {
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  white-space: nowrap;
+
+}
+
+.spec-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 14px;
+
+  margin-bottom: 24px;
+
+}
+
+.spec-item {
+
+  background: #f6f6f6;
+
+  padding: 14px;
+
+  border-radius: 8px;
+
+}
+
+.spec-item strong {
+
+  display: block;
+
+  margin-bottom: 5px;
+
+}
+
+.description-box {
+
+  margin-bottom: 24px;
+
+}
+
+.description-box h3 {
+
+  margin-bottom: 8px;
+
+}
+
+.contact-box {
+
+  background: #f6f6f6;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+}
+
+.contact-box h3 {
+
+  margin-top: 0;
+
+}
+
+.contact-box a {
+
+  color: #2f6fc2;
+
+  font-weight: bold;
+
+  text-decoration: none;
+
+}
+
+@media (max-width: 700px) {
+
+  .details-header {
+
+    display: block;
+
+  }
+
+  .details-price {
+
+    margin-top: 15px;
+
+  }
+
+  .spec-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}    
+
   </style>
 
 </head>
@@ -328,61 +478,127 @@ if (images.length > 0) {
 
      ${galleryHtml}
 
+  <div class="details-card">
+
+  <div class="details-header">
+
+    <div>
+
+      <span class="details-badge">${listing.listing_type || ""}</span>
+
       <h1>${listing.equipment_title || "Equipment"}</h1>
 
-      <p><strong>Listing Type:</strong> ${listing.listing_type || ""}</p>
+    </div>
 
-      <p><strong>Category:</strong> ${listing.category || ""}</p>
+    <div class="details-price">
 
-      <p><strong>Make:</strong> ${listing.make || ""}</p>
+      R${listing.price || ""}
 
-      <p><strong>Model:</strong> ${listing.model || ""}</p>
+    </div>
 
-      <p><strong>Year:</strong> ${listing.year || ""}</p>
+  </div>
 
-      <p><strong>Condition:</strong> ${listing.condition || ""}</p>
+  <div class="spec-grid">
 
-      <p><strong>Price:</strong> R${listing.price || ""}</p>
+    <div class="spec-item">
 
-      <p><strong>Location:</strong> ${listing.town_city || ""}, ${listing.province || ""}</p>
+      <strong>Category</strong>
 
-      <h3>Description</h3>
+      <span>${listing.category || ""}</span>
 
-      <p>${listing.description || ""}</p>
+    </div>
 
-      <div class="contact-box">
+    <div class="spec-item">
 
-        <h3>Seller Contact Details</h3>
+      <strong>Make</strong>
 
-       <p><strong>Name:</strong> ${listing.contact_name || ""}</p>
+      <span>${listing.make || ""}</span>
 
-<p>
+    </div>
 
-  <strong>WhatsApp:</strong>
+    <div class="spec-item">
 
-  <a href="https://wa.me/27${(listing.contact_phone || "").replace(/^0/, "").replace(/\D/g, "")}" target="_blank">
+      <strong>Model</strong>
 
-    ${listing.contact_phone || ""}
+      <span>${listing.model || ""}</span>
 
-  </a>
+    </div>
 
-</p>
+    <div class="spec-item">
 
-<p>
+      <strong>Year</strong>
 
-  <strong>Email:</strong>
+      <span>${listing.year || ""}</span>
 
-  <a href="mailto:${listing.contact_email || ""}">
+    </div>
 
-    ${listing.contact_email || ""}
+    <div class="spec-item">
 
-  </a>
+      <strong>Condition</strong>
 
-</p> 
+      <span>${listing.condition || ""}</span>
 
-      </div>
+    </div>
 
-    `;
+    <div class="spec-item">
+
+      <strong>Location</strong>
+
+      <span>${listing.town_city || ""}, ${listing.province || ""}</span>
+
+    </div>
+
+  </div>
+
+  <div class="description-box">
+
+    <h3>Description</h3>
+
+    <p>${listing.description || ""}</p>
+
+  </div>
+
+  <div class="contact-box">
+
+    <h3>Seller Contact Details</h3>
+
+    <p>
+
+      <strong>Name:</strong>
+
+      ${listing.contact_name || ""}
+
+    </p>
+
+    <p>
+
+      <strong>WhatsApp:</strong>
+
+      <a href="https://wa.me/27${(listing.contact_phone || "").replace(/^0/, "").replace(/\D/g, "")}" target="_blank">
+
+        ${listing.contact_phone || ""}
+
+      </a>
+
+    </p>
+
+    <p>
+
+      <strong>Email:</strong>
+
+      <a href="mailto:${listing.contact_email || ""}">
+
+        ${listing.contact_email || ""}
+
+      </a>
+
+    </p>
+
+  </div>
+
+</div>
+
+`;    
 
   }
 
