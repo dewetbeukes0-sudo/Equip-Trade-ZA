@@ -138,6 +138,64 @@
 
 }
 
+    .main-image-wrap {
+
+  position: relative;
+
+}
+
+.gallery-arrow {
+
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background: rgba(0, 0, 0, 0.55);
+
+  color: white;
+
+  border: none;
+
+  width: 42px;
+
+  height: 52px;
+
+  font-size: 26px;
+
+  cursor: pointer;
+
+  border-radius: 6px;
+
+  z-index: 2;
+
+}
+
+.gallery-prev {
+
+  left: 12px;
+
+}
+
+.gallery-next {
+
+  right: 12px;
+
+}
+
+.gallery-arrow:hover {
+
+  background: rgba(0, 0, 0, 0.75);
+
+}
+
+.gallery-thumb.active-thumb {
+
+  border-color: #f2b705;
+
+}
+
   </style>
 
 </head>
@@ -226,7 +284,7 @@
 
     }
 
-    let galleryHtml = "";
+   let galleryHtml = "";
 
 if (images.length > 0) {
 
@@ -234,13 +292,29 @@ if (images.length > 0) {
 
     '<div class="equipment-gallery">' +
 
-      '<img id="mainGalleryImage" class="main-image" src="' + images[0] + '" alt="Equipment">' +
+      '<div class="main-image-wrap">' +
+
+        '<button class="gallery-arrow gallery-prev" onclick="changeGalleryImage(-1)">&#10094;</button>' +
+
+        '<img id="mainGalleryImage" class="main-image" src="' + images[0] + '" alt="Equipment">' +
+
+        '<button class="gallery-arrow gallery-next" onclick="changeGalleryImage(1)">&#10095;</button>' +
+
+      '</div>' +
 
       '<div class="gallery-thumbnails">' +
 
-        images.map(function(url) {
+        images.map(function(url, index) {
 
-          return '<img class="gallery-thumb" src="' + url + '" alt="Equipment photo" onclick="document.getElementById(\'mainGalleryImage\').src=this.src">';
+          return '<img class="gallery-thumb ' + (index === 0 ? 'active-thumb' : '') + '" ' +
+
+                 'src="' + url + '" ' +
+
+                 'alt="Equipment photo" ' +
+
+                 'data-index="' + index + '" ' +
+
+                 'onclick="selectGalleryImage(' + index + ')">';
 
         }).join('') +
 
@@ -313,6 +387,54 @@ if (images.length > 0) {
   }
 
   loadEquipmentDetails();
+
+let currentGalleryIndex = 0;
+
+function selectGalleryImage(index) {
+
+  currentGalleryIndex = index;
+
+  const mainImage = document.getElementById("mainGalleryImage");
+
+  const thumbs = document.querySelectorAll(".gallery-thumb");
+
+  if (!mainImage || !thumbs.length) return;
+
+  mainImage.src = thumbs[index].src;
+
+  thumbs.forEach(function(thumb) {
+
+    thumb.classList.remove("active-thumb");
+
+  });
+
+  thumbs[index].classList.add("active-thumb");
+
+}
+
+function changeGalleryImage(direction) {
+
+  const thumbs = document.querySelectorAll(".gallery-thumb");
+
+  if (!thumbs.length) return;
+
+  currentGalleryIndex += direction;
+
+  if (currentGalleryIndex < 0) {
+
+    currentGalleryIndex = thumbs.length - 1;
+
+  }
+
+  if (currentGalleryIndex >= thumbs.length) {
+
+    currentGalleryIndex = 0;
+
+  }
+
+  selectGalleryImage(currentGalleryIndex);
+
+}  
 
 </script>
 
