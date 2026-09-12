@@ -840,6 +840,94 @@ window.addEventListener("click", function(event) {
 
 });  
 
+document.addEventListener("DOMContentLoaded", function () {
+
+  const enquiryForm = document.getElementById("enquiryForm");
+
+  if (!enquiryForm) return;
+
+  enquiryForm.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const status = document.getElementById("enquiryStatus");
+
+    const submitButton = enquiryForm.querySelector('button[type="submit"]');
+
+    const params = new URLSearchParams(window.location.search);
+
+    const listingId = params.get("id");
+
+    const buyerName = document.getElementById("buyerName").value.trim();
+
+    const buyerPhone = document.getElementById("buyerPhone").value.trim();
+
+    const buyerEmail = document.getElementById("buyerEmail").value.trim();
+
+    const buyerMessage = document.getElementById("buyerMessage").value.trim();
+
+    submitButton.disabled = true;
+
+    submitButton.textContent = "Sending...";
+
+    status.textContent = "";
+
+    const { error } = await supabaseClient
+
+      .from("enquiries")
+
+      .insert([
+
+        {
+
+          listing_id: Number(listingId),
+
+          buyer_name: buyerName,
+
+          buyer_phone: buyerPhone,
+
+          buyer_email: buyerEmail,
+
+          message: buyerMessage
+
+        }
+
+      ]);
+
+    if (error) {
+
+      console.error("Enquiry error:", error);
+
+      status.textContent = "There was a problem sending your enquiry. Please try again.";
+
+      submitButton.disabled = false;
+
+      submitButton.textContent = "Send Enquiry";
+
+      return;
+
+    }
+
+    status.textContent = "Enquiry sent successfully!";
+
+    enquiryForm.reset();
+
+    submitButton.disabled = false;
+
+    submitButton.textContent = "Send Enquiry";
+
+    setTimeout(function () {
+
+      closeEnquiryForm();
+
+      status.textContent = "";
+
+    }, 1800);
+
+  });
+
+});  
+
 </script>
 
 <div id="enquiryModal" class="enquiry-modal">
